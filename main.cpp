@@ -8,7 +8,6 @@
 //                         - Use the syntax in Note 1: sa int main if gusto mo matry yung interface.
 // Note 2: We can implement setter and getters for updating items? Because vectors are for pushbacks?
 // test comment
-// test comment 2
 
 #include <iostream>
 #include <string>

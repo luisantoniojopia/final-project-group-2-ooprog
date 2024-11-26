@@ -4,8 +4,8 @@ project(sample)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(sample main.cpp
-        menu/base_menu.h
-        menu/admin_menu.h
+        base_menu.h
+        admin_menu.h
         base_account.h
         base_register_and_log_in.h
         admin_account.h
@@ -15,6 +15,6 @@ add_executable(sample main.cpp
         payment_method.h
         payment_record.h
         report.h
-        menu/user_menu.h
-        menu/role_menu.h
+        user_menu.h
+        role_menu.h
 )
