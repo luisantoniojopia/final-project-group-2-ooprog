@@ -10,16 +10,12 @@
 // test comment
 
 #include <iostream>
-#include <vector>
 #include <string>
 
 #include "admin_account.h"
-#include "base_menu.h"
-#include "admin_menu.h"
-#include "base_account.h"
-#include "base_register_and_log_in.h"
 #include "user_account.h"
-#include "venue.h"
+#include "admin_menu.h"
+#include "base_menu.h"
 
 using namespace std;
 
