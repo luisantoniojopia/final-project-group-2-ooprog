@@ -5,7 +5,7 @@ using namespace std;
 
 class PaymentRecord {
 public:
-    void reset() {
+     void reset() {
         cout << endl;
         system("pause");
         system("cls");
