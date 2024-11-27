@@ -23,24 +23,7 @@ public:
     void create() override {
         cout << "- User Create Account -\n\n";
 
-        // cout << "Enter username: ";
-        // cin.ignore();
-        // getline(cin, username);
-        //
-        // // Put loop condition here - lets the user reenter a new username:
-        // if (isUsernameTaken(username)) {
-        //     cout << "Username already taken. Please choose a different one.\n\n" << endl;
-        //     reset();
-        //     return;
-        // }
-        //
-        // cout << "Enter password: ";
-        // getline(cin, password);
-        //
-        // UserAccounts.push_back({username, password});
-        // cout << "Registration successful!" << endl;
-        //
-        // reset();
+        reset();
     }
 
     void view() override {
