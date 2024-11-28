@@ -10,8 +10,8 @@ using namespace std;
 class UserAccount : public BaseAccount, public BaseRegisterAndLogIn {
 public:
 	struct UserAccountsCollection {
-		string username;
-		string password;
+		string accountUsername;
+		string accountPassword;
 	};
 	
 	vector<UserAccountsCollection> UserAccounts;
@@ -21,24 +21,24 @@ public:
 	}
 	
     void create() override {
-    	string username, password;
+    	string accountUsername, accountPassword;
     	
         cout << "- User Create Account -\n\n";
 
 		cout << "Enter username: ";
 		cin.ignore();
-		getline(cin, username);
+		getline(cin, accountUsername);
 		
-		if(isUsernameTaken(username)) {
+		if(isUsernameTaken(accountUsername)) {
 			cout << "Username already taken. Please choose a different one.\n\n" << endl;
 			reset();
 			return;
 		}
 		
 		cout << "Enter password: ";
-		getline(cin, password);
+		getline(cin, accountPassword);
 		
-		UserAccounts.push_back({username, password});
+		UserAccounts.push_back({accountUsername, accountPassword});
 		cout << "Registration successful!" << endl;
 		
         reset();
@@ -63,18 +63,19 @@ public:
     }
 
     int logIn() override {
-    	string username, password;
+    	string accountUsername, accountPassword;
+    	
         cout << "- User log In account -\n\n";
-		
+
 		cout << "Enter username: ";
 		cin.ignore();
-		getline(cin, username);
+		getline(cin, accountUsername);
 		
 		cout << "Enter password: ";
-		getline(cin, password);
+		getline(cin, accountPassword);
 		
 		for (size_t i = 0; i < UserAccounts.size(); i++) {
-            if (UserAccounts[i].username == username && UserAccounts[i].password == password) {
+            if (UserAccounts[i].accountUsername == accountUsername && UserAccounts[i].accountPassword == accountPassword) {
 
                 return i;
             }
@@ -110,18 +111,19 @@ public:
                     return logIn();
                     break;
                 }
-                case 3:
+                case 3: {
                     condition = false;
-                break;
+                	break;
+                }
                 default:
                     cout << "Invalid input. Please try again.\n";
             }
         }
-    }
+	}
     
-    bool isUsernameTaken(const string& username) const {
+    bool isUsernameTaken(const string& accountUsername) const {
         for (const auto& account : UserAccounts) {
-            if (account.username == username) {
+            if (account.accountUsername == accountUsername) {
                 return true;
             }
         }
