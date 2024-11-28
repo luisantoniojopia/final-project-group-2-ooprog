@@ -16,7 +16,6 @@
 #include "user_account.h"
 #include "admin_menu.h"
 #include "base_menu.h"
-#include "user_menu.h"
 
 using namespace std;
 
@@ -43,16 +42,8 @@ public:
 	        	case 1: {
 	        		reset();
 	        		UserAccount ua;
-
-		        	int ucc = ua.registerOrLogIn();
-		        	if (ucc != -1) {
-							UserAccount::UserAccountsCollection user = ua.getUserAccount(ucc);
-							cout << "\nLogin successful! Welcome, " << user.accountusername << "!\n\n" << endl;
-							reset();
-							UserMenu um;
-							um.menu();
+		        	ua.registerOrLogIn();
 	        		break;
-	        		}
 	        	}
 	        	case 2: {
 	        		cout << "\nEnter admin password: ";
@@ -62,11 +53,10 @@ public:
 	            		cout << "\nAccess granted!\n";
 	                    reset();
 		        		AdminAccount ac;
-		        		
 	        			int acc = ac.registerOrLogIn();
 						if (acc != -1) {
 							AdminAccount::AdminAccountsCollection admin = ac.getAdminAccount(acc);
-							cout << "\nLogin successful! Welcome, " << admin.username << "!\n\n" << endl;
+							cout << "Login successful! Welcome, " << admin.username << "!\n\n" << endl;
 							reset();
 							AdminMenu am;
 							am.menu();

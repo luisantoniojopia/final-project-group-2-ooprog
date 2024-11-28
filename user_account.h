@@ -10,8 +10,8 @@ using namespace std;
 class UserAccount : public BaseAccount, public BaseRegisterAndLogIn {
 public:
 	struct UserAccountsCollection {
-		string accountusername;
-		string accountpassword;
+		string accountUsername;
+		string accountPassword;
 	};
 	
 	vector<UserAccountsCollection> UserAccounts;
@@ -21,24 +21,24 @@ public:
 	}
 	
     void create() override {
-    	string accountusername, accountpassword;
+    	string accountUsername, accountPassword;
     	
         cout << "- User Create Account -\n\n";
 
 		cout << "Enter username: ";
 		cin.ignore();
-		getline(cin, accountusername);
+		getline(cin, accountUsername);
 		
-		if(isUsernameTaken(accountusername)) {
+		if(isUsernameTaken(accountUsername)) {
 			cout << "Username already taken. Please choose a different one.\n\n" << endl;
 			reset();
 			return;
 		}
 		
 		cout << "Enter password: ";
-		getline(cin, accountpassword);
+		getline(cin, accountPassword);
 		
-		UserAccounts.push_back({accountusername, accountpassword});
+		UserAccounts.push_back({accountUsername, accountPassword});
 		cout << "Registration successful!" << endl;
 		
         reset();
@@ -63,19 +63,19 @@ public:
     }
 
     int logIn() override {
-    	string accountusername, accountpassword;
+    	string accountUsername, accountPassword;
     	
         cout << "- User log In account -\n\n";
-		
+
 		cout << "Enter username: ";
 		cin.ignore();
-		getline(cin, accountusername);
+		getline(cin, accountUsername);
 		
 		cout << "Enter password: ";
-		getline(cin, accountpassword);
+		getline(cin, accountPassword);
 		
 		for (size_t i = 0; i < UserAccounts.size(); i++) {
-            if (UserAccounts[i].accountusername == accountusername && UserAccounts[i].accountpassword == accountpassword) {
+            if (UserAccounts[i].accountUsername == accountUsername && UserAccounts[i].accountPassword == accountPassword) {
 
                 return i;
             }
@@ -121,9 +121,9 @@ public:
         }
 	}
     
-    bool isUsernameTaken(const string& accountusername) const {
+    bool isUsernameTaken(const string& accountUsername) const {
         for (const auto& account : UserAccounts) {
-            if (account.accountusername == accountusername) {
+            if (account.accountUsername == accountUsername) {
                 return true;
             }
         }

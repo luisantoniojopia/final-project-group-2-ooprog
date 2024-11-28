@@ -7,13 +7,11 @@
 #include "base_register_and_log_in.h"
 using namespace std;
 
-
 class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
 private:
 	const string adminPassword = "yuripogi";
 
 public:
-
 	struct AdminAccountsCollection {
 		string username;
 		string password;
