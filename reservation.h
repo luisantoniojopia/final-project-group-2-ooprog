@@ -6,7 +6,10 @@
 using namespace std;
 
 class Reservation : public BaseAccount {
-public:
+    private:
+        vector<Reservation*> reservationList; // Store pointers (2 categories of venues) to ?
+
+    public:
     string askVenue;
     int askReservedDates;
 
@@ -56,6 +59,7 @@ public:
 
         cout << "\tEnter the date of your reservation: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if input is wrong
@@ -65,10 +69,11 @@ public:
             // You reserved for [venue date].
 
         // if input is 2 or more days
-        cout << "For 2 or more days, choose your preferred set-up\n";
+        cout << "\tFor 2 or more days, choose your preferred set-up\n";
         cout << "\t\tD1 - Separate Dates\n\t\tD2 - Date Range\n\n";
         cout << "\tEnter your preference: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if number of input > characters
@@ -85,6 +90,7 @@ public:
 
         cout << "\tEnter the date of your reservation: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if input is wrong
@@ -96,6 +102,7 @@ public:
         // if input is D2 - Date Range
         cout << "\tEnter the start date of your reservation: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if input is wrong
@@ -108,6 +115,7 @@ public:
         cout << "\tOur packages include 8 hours of exclusive use of your chosen venue, billed at the daily rate.\n\n";
         cout << "\tEnter the start time of your reservation: ";
         // getline
+        cout << "\n\n";
 
         // validation
 
@@ -118,6 +126,7 @@ public:
         cout << "\t\tPM3 - Bank Transfer\n";
         cout << "\tEnter your preferred method code: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if number of input > characters
@@ -131,11 +140,12 @@ public:
 
         cout << "V. Payment Schedule\n";
         cout << "\tChoose your preferred payment plan\n";
-        cout << "\t\tPS1 - Full Payment";
+        cout << "\t\tPS1 - Full Payment\n";
         cout << "\t\tPS2 - 50/50 Split\n";
         cout << "\t\tPS3 - Monthly Installments\n";
         cout << "\tEnter your payment schedule: ";
         // getline
+        cout << "\n\n";
 
         // validation
             // if number of input > characters
@@ -153,17 +163,35 @@ public:
     void view() override {
         cout << "- View Reservation -\n\n";
 
+        if(reservationList.empty()) {
+            cout << "\tReservation list is empty. Nothing to view." << endl << endl;
+            system("pause");
+            return;
+        }
+
         reset();
     }
 
     void update() override {
         cout << "- Update Reservation -\n\n";
 
+        if(reservationList.empty()) {
+            cout << "\tReservation list is empty. Nothing to update." << endl << endl;
+            system("pause");
+            return;
+        }
+
         reset();
     }
 
     void remove() override {
         cout << "- Remove Reservation -\n\n";
+
+        if(reservationList.empty()) {
+            cout << "\tReservation list is empty. Nothing to remove." << endl << endl;
+            system("pause");
+            return;
+        }
 
         reset();
     }
