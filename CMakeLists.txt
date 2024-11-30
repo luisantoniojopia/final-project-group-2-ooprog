@@ -3,6 +3,7 @@ project(sample)
 
 set(CMAKE_CXX_STANDARD 20)
 
+# Main menu executable
 add_executable(sample main.cpp
         base_menu.h
         admin_menu.h
@@ -17,4 +18,9 @@ add_executable(sample main.cpp
         report.h
         user_menu.h
         role_menu.h
+)
+
+# Lui test program executable
+add_executable(test lui_file_tester.cpp
+        reservation.h
 )
