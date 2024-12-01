@@ -1,9 +1,14 @@
 #include <iostream>
+
+#include "payment_method.h"
 using namespace std;
 #include "reservation.h"
 
 int main() {
-    Reservation r;
-    r.create();
+    PaymentMethod pm;
+    pm.create();
+    pm.view();
+    pm.update();
+    pm.remove();
     return 0;
 }
