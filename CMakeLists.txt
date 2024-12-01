@@ -22,5 +22,5 @@ add_executable(sample main.cpp
 
 # Lui test program executable
 add_executable(test lui_file_tester.cpp
-        reservation.h
+        payment_method.h
 )

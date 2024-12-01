@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <vector>
-
 #include "base_account.h"
 using namespace std;
 
