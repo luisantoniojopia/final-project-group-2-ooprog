@@ -16,46 +16,12 @@ private:
     vector<Reservation*> reservationList; // Stores reservation objects
 
 public:
-    // Setters with validation
-    void setVenueCode(const string& code) {
-        if (code.size() != 2 || (code[0] != 'I' && code[0] != 'O')) {
-            cout << "Invalid venue code. Please enter a valid code (e.g., I1, O1).\n";
-        } else {
-            venueCode = code;
-        }
-    }
-
-    void setReservationDates(const string& dates) {
-        if (dates.empty()) {
-            cout << "Invalid input. Dates cannot be empty.\n";
-        } else {
-            reservationDates = dates;
-        }
-    }
-
-    void setStartTime(const string& time) {
-        if (time.empty()) {
-            cout << "Invalid input. Start time cannot be empty.\n";
-        } else {
-            startTime = time;
-        }
-    }
-
-    void setPaymentMethod(const string& method) {
-        if (method.size() != 3 || (method != "PM1" && method != "PM2" && method != "PM3")) {
-            cout << "Invalid payment method code. Please enter PM1, PM2, or PM3.\n";
-        } else {
-            paymentMethod = method;
-        }
-    }
-
-    void setPaymentSchedule(const string& schedule) {
-        if (schedule.size() != 3 || (schedule != "PS1" && schedule != "PS2" && schedule != "PS3")) {
-            cout << "Invalid payment schedule code. Please enter PS1, PS2, or PS3.\n";
-        } else {
-            paymentSchedule = schedule;
-        }
-    }
+    // Setters
+    void setVenueCode(const string& code) { venueCode = code; }
+    void setReservationDates(const string& dates) { reservationDates = dates; }
+    void setStartTime(const string& time) { startTime = time; }
+    void setPaymentMethod(const string& method) { paymentMethod = method; }
+    void setPaymentSchedule(const string& schedule) { paymentSchedule = schedule; }
 
     // Getters
     string getVenueCode() const { return venueCode; }
