@@ -1,19 +1,73 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 #include "base_account.h"
 using namespace std;
 
 class Reservation : public BaseAccount {
-    private:
-        vector<Reservation*> reservationList; // Store pointers (2 categories of venues) to ?
+private:
+    string venueCode;        // Stores venue code
+    string reservationDates; // Reservation date(s) details
+    string startTime;        // Start time of reservation
+    string paymentMethod;    // Payment method code
+    string paymentSchedule;  // Payment schedule code
+    vector<Reservation*> reservationList; // Stores reservation objects
 
-    public:
-    string askVenue;
-    int askReservedDates;
+public:
+    // Setters with validation
+    void setVenueCode(const string& code) {
+        if (code.size() != 2 || (code[0] != 'I' && code[0] != 'O')) {
+            cout << "Invalid venue code. Please enter a valid code (e.g., I1, O1).\n";
+        } else {
+            venueCode = code;
+        }
+    }
 
+    void setReservationDates(const string& dates) {
+        if (dates.empty()) {
+            cout << "Invalid input. Dates cannot be empty.\n";
+        } else {
+            reservationDates = dates;
+        }
+    }
+
+    void setStartTime(const string& time) {
+        if (time.empty()) {
+            cout << "Invalid input. Start time cannot be empty.\n";
+        } else {
+            startTime = time;
+        }
+    }
+
+    void setPaymentMethod(const string& method) {
+        if (method.size() != 3 || (method != "PM1" && method != "PM2" && method != "PM3")) {
+            cout << "Invalid payment method code. Please enter PM1, PM2, or PM3.\n";
+        } else {
+            paymentMethod = method;
+        }
+    }
+
+    void setPaymentSchedule(const string& schedule) {
+        if (schedule.size() != 3 || (schedule != "PS1" && schedule != "PS2" && schedule != "PS3")) {
+            cout << "Invalid payment schedule code. Please enter PS1, PS2, or PS3.\n";
+        } else {
+            paymentSchedule = schedule;
+        }
+    }
+
+    // Getters
+    string getVenueCode() const { return venueCode; }
+    string getReservationDates() const { return reservationDates; }
+    string getStartTime() const { return startTime; }
+    string getPaymentMethod() const { return paymentMethod; }
+    string getPaymentSchedule() const { return paymentSchedule; }
+
+    // Create Reservation
     void create() override {
+        string input;
+
         cout << "- Create Reservation -\n\n";
 
         cout << "I. Preferred Venue\n";
@@ -32,7 +86,8 @@ class Reservation : public BaseAccount {
         cout << "\t\tO5 - Multi-Sports Court\n";
 
         cout << "\tEnter the venue code: ";
-        getline(cin, askVenue);
+        getline(cin, input);
+        setVenueCode(input);
         cout << "\n\n";
 
         // validation
@@ -58,7 +113,8 @@ class Reservation : public BaseAccount {
             // You reserved for [num] day/s.
 
         cout << "\tEnter the date of your reservation: ";
-        // getline
+        getline(cin, input);
+        setReservationDates(input);
         cout << "\n\n";
 
         // validation
@@ -114,18 +170,20 @@ class Reservation : public BaseAccount {
         cout << "III. Reservation Time\n";
         cout << "\tOur packages include 8 hours of exclusive use of your chosen venue, billed at the daily rate.\n\n";
         cout << "\tEnter the start time of your reservation: ";
-        // getline
+        getline(cin, input);
+        setStartTime(input);
         cout << "\n\n";
 
         // validation
 
         cout << "IV. Payment Method\n";
-        cout << "\tChoose your preferred mode of payment\n";
+        cout << "\tSelect your preferred mode of payment\n";
         cout << "\t\tPM1 - Cash\n";
         cout << "\t\tPM2 - Credit/Debit Card\n";
         cout << "\t\tPM3 - Bank Transfer\n";
         cout << "\tEnter your preferred method code: ";
-        // getline
+        getline(cin, input);
+        setPaymentMethod(input);
         cout << "\n\n";
 
         // validation
@@ -144,7 +202,8 @@ class Reservation : public BaseAccount {
         cout << "\t\tPS2 - 50/50 Split\n";
         cout << "\t\tPS3 - Monthly Installments\n";
         cout << "\tEnter your payment schedule: ";
-        // getline
+        getline(cin, input);
+        setPaymentSchedule(input);
         cout << "\n\n";
 
         // validation
@@ -156,6 +215,10 @@ class Reservation : public BaseAccount {
             //
             // if input matches
             // You have chosen [input] as payment schedule. Kindly coordinate with the admin to process your payment.
+
+        // Add reservation to the list
+        reservationList.push_back(new Reservation(*this));
+        // cout << "Reservation created successfully!\n\n";
 
         reset();
     }
