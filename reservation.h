@@ -62,7 +62,7 @@ public:
         cout << "\t\tO4 - Tiny Cabin (6 pax)\n";
         cout << "\t\tO5 - Multi-Sports Court\n";
 
-        cout << "\tEnter the venue code: ";
+        cout << "\tEnter the venue ID: ";
         getline(cin, input);
         setVenueID(input);
         cout << "\n\n";
@@ -79,7 +79,8 @@ public:
 
         cout << "II. Reservation Date\n";
         cout << "\tEnter the number of days of your reservation: ";
-        // getline(cin, askReservedDates);
+        getline(cin, input);
+        setNumOfReservationDays(input);
         cout << "\n\n";
 
         // validation
@@ -91,7 +92,7 @@ public:
 
         cout << "\tEnter the date of your reservation: ";
         getline(cin, input);
-        setMultiDayDateSelection(input);
+        setSingleReservationDate(input);
         cout << "\n\n";
 
         // validation
@@ -105,7 +106,8 @@ public:
         cout << "\tFor 2 or more days, choose your preferred set-up\n";
         cout << "\t\tD1 - Separate Dates\n\t\tD2 - Date Range\n\n";
         cout << "\tEnter your preference: ";
-        // getline
+        getline(cin, input);
+        setMultiDayDateSelection(input);
         cout << "\n\n";
 
         // validation
@@ -122,7 +124,8 @@ public:
         // loop to number of days
 
         cout << "\tEnter the date of your reservation: ";
-        // getline
+        getline(cin, input);
+        setMultiDaySeparateDates(input);
         cout << "\n\n";
 
         // validation
@@ -134,7 +137,8 @@ public:
 
         // if input is D2 - Date Range
         cout << "\tEnter the start date of your reservation: ";
-        // getline
+        getline(cin, input);
+        setMultiDayDateRange(input);
         cout << "\n\n";
 
         // validation
