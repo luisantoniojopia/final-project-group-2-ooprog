@@ -7,25 +7,37 @@ using namespace std;
 
 class Reservation : public BaseAccount {
 private:
-    string venueCode;        // Stores venue code
-    string reservationDates; // Reservation date(s) details
-    string startTime;        // Start time of reservation
+    string venueID;        // Stores venue id
+    string numOfReservationDays; // Number of reservation days
+    string singleReservationDate; // Reservation date for 1 day
+    string multiDayDateSelection; // Choose from separate or date range
+    string multiDaySeparateDates; // Reservation for separate days
+    string multiDayDateRange; // Reservation for date range
+    string reservationStartTime;  // Start time of reservation
     string paymentMethod;    // Payment method code
     string paymentSchedule;  // Payment schedule code
     vector<Reservation*> reservationList; // Stores reservation objects
 
 public:
     // Setters
-    void setVenueCode(const string& code) { venueCode = code; }
-    void setReservationDates(const string& dates) { reservationDates = dates; }
-    void setStartTime(const string& time) { startTime = time; }
+    void setVenueID(const string& ID) { venueID = ID; }
+    void setNumOfReservationDays(const string& numOfDays) { numOfReservationDays = numOfDays; }
+    void setSingleReservationDate(const string& singleDate) { singleReservationDate = singleDate; }
+    void setMultiDayDateSelection(const string& selectDates) { multiDayDateSelection = selectDates; }
+    void setMultiDaySeparateDates(const string& separateDates) { multiDayDateRange = separateDates; }
+    void setMultiDayDateRange(const string& dateRange) { multiDayDateRange = dateRange; }
+    void setReservationStartTime(const string& time) { reservationStartTime = time; }
     void setPaymentMethod(const string& method) { paymentMethod = method; }
     void setPaymentSchedule(const string& schedule) { paymentSchedule = schedule; }
 
     // Getters
-    string getVenueCode() const { return venueCode; }
-    string getReservationDates() const { return reservationDates; }
-    string getStartTime() const { return startTime; }
+    string getVenueCode() const { return venueID; }
+    string getNumOfReservationDays() const { return numOfReservationDays; }
+    string getSingleReservationDate() const { return singleReservationDate; }
+    string getMultiDayDateSelection() const { return multiDayDateSelection; }
+    string getMultiDaySeparateDates() const { return multiDayDateRange; }
+    string getMultiDayDateRange() const { return multiDayDateRange; }
+    string getReservationStartTime() const { return reservationStartTime; }
     string getPaymentMethod() const { return paymentMethod; }
     string getPaymentSchedule() const { return paymentSchedule; }
 
@@ -52,7 +64,7 @@ public:
 
         cout << "\tEnter the venue code: ";
         getline(cin, input);
-        setVenueCode(input);
+        setVenueID(input);
         cout << "\n\n";
 
         // validation
@@ -79,7 +91,7 @@ public:
 
         cout << "\tEnter the date of your reservation: ";
         getline(cin, input);
-        setReservationDates(input);
+        setMultiDayDateSelection(input);
         cout << "\n\n";
 
         // validation
@@ -136,7 +148,7 @@ public:
         cout << "\tOur packages include 8 hours of exclusive use of your chosen venue, billed at the daily rate.\n\n";
         cout << "\tEnter the start time of your reservation: ";
         getline(cin, input);
-        setStartTime(input);
+        setReservationStartTime(input);
         cout << "\n\n";
 
         // validation
