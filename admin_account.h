@@ -11,38 +11,57 @@ using namespace std;
 class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
 protected:
 	const string adminPassword;
-	vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
+	static vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
 	// vector<UserAccount*> UserAccounts; // Stores user accounts objects
 
 public:
 	AdminAccount(string u, string p, string pn, string e)
 		: BaseAccount(u, p, pn, e), adminPassword("yuripogi") {}
 
+	static vector<AdminAccount*> getAdminAccounts() {
+		return AdminAccounts;
+	}
+
 	void create() override {
 		cout << "- Admin Create Account -\n\n";
+
+		string tempUsername, tempPassword, tempPhoneNumber, tempEmail;
+
 		cout << "Enter username: ";
 		cin.ignore();
-		getline(cin, username);
+		getline(cin, tempUsername);
 
-		// Put loop condition here - lets the user reenter a new username:
-		if (isUsernameTaken(username)) {
-            cout << "Username already taken. Please choose a different one.\n\n" << endl;
-        	reset();
-            return;
-        }
+		if (isUsernameTaken(tempUsername)) {
+			cout << "Username already taken. Please choose a different one.\n\n";
+			reset();
+			return;
+		}
 
-        cout << "Enter password: ";
-        getline(cin, password);
+		cout << "Enter password: ";
+		getline(cin, tempPassword);
 
-		auto* newAdmin = new AdminAccount(username, password, phoneNumber, email);
+		cout << "Enter phone number: ";
+		getline(cin, tempPhoneNumber);
+
+		cout << "Enter email: ";
+		getline(cin, tempEmail);
+
+		// Create a new AdminAccount with the entered data
+		auto* newAdmin = new AdminAccount(tempUsername, tempPassword, tempPhoneNumber, tempEmail);
 		AdminAccounts.push_back(newAdmin);
 
+		cout << "Account created successfully!\n";
 		reset();
 	}
 
 	void view() override {
 		cout << "- Admin View Account -\n\n";
-
+		for (const auto& admin : AdminAccounts) {
+			cout << "Username: " << admin->getUsername() << endl;
+			cout << "Phone Number: " << admin->getPhoneNumber() << endl;
+			cout << "Email: " << admin->getEmail() << endl;
+			cout << "----------------------------\n";
+		}
 		reset();
 	}
 
@@ -124,3 +143,5 @@ public:
 		return false;
 	}
 };
+
+vector<AdminAccount*> AdminAccount::AdminAccounts;
