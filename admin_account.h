@@ -125,8 +125,7 @@ public:
             		break;
             	}
             	case 3: {
-            		condition = false;
-            		break;
+            		return -1;
             	}
             	default:
             		cout << "Invalid input. Please try again.\n";
