@@ -94,10 +94,11 @@ public:
 		bool condition = true;
     while (condition) {
         cout << "What would you like to update?\n";
-        cout << "1 - Password\n";
-        cout << "2 - Phone Number\n";
-        cout << "3 - Email\n";
-        cout << "4 - Return\n";
+        cout << "1 - Username\n";
+        cout << "2 - Password\n";
+        cout << "3 - Phone Number\n";
+        cout << "4 - Email\n";
+        cout << "5 - Return\n";
         cout << ": ";
         cin >> choice;
 
@@ -105,6 +106,20 @@ public:
 
         switch (choice) {
             case 1: {
+                string newUsername;
+                cout << "Enter new username: ";
+                getline(cin, newUsername);
+
+                // Check if the new username is already taken
+                if (isUsernameTaken(newUsername)) {
+                    cout << "Username already taken. Please choose a different one.\n";
+                } else {
+                    accountToUpdate->setUsername(newUsername);
+                    cout << "Username updated successfully!\n";
+                }
+                break;
+            }
+            case 2: {
                 string newPassword;
                 cout << "Enter new password: ";
                 getline(cin, newPassword);
@@ -112,7 +127,7 @@ public:
                 cout << "Password updated successfully!\n";
                 break;
             }
-            case 2: {
+            case 3: {
                 string newPhoneNumber;
                 cout << "Enter new phone number: ";
                 getline(cin, newPhoneNumber);
@@ -120,7 +135,7 @@ public:
                 cout << "Phone number updated successfully!\n";
                 break;
             }
-            case 3: {
+            case 4: {
                 string newEmail;
                 cout << "Enter new email: ";
                 getline(cin, newEmail);
@@ -128,7 +143,7 @@ public:
                 cout << "Email updated successfully!\n";
                 break;
             }
-            case 4: {
+            case 5: {
                 cout << "Returning to main menu...\n";
                 reset();
                 return;
@@ -139,10 +154,37 @@ public:
     }
 }
 
-
 	void remove() override {
 		cout << "- Admin Remove Account -\n\n";
 
+		string usernameToRemove;
+		cout << "Enter the username of the account to remove: ";
+		cin.ignore();
+		getline(cin, usernameToRemove);
+
+		// Loop through AdminAccounts vector
+		for (auto it = AdminAccounts.begin(); it != AdminAccounts.end();) {
+			if ((*it)->getUsername() == usernameToRemove) {
+				char confirmation;
+				cout << "Are you sure you want to delete the account \"" << usernameToRemove << "\"? (y/n): ";
+				cin >> confirmation;
+
+				if (confirmation == 'y' || confirmation == 'Y') {
+					delete *it; // Free memory
+					AdminAccounts.erase(it); // Remove the pointer from the vector
+					cout << "Account \"" << usernameToRemove << "\" has been removed successfully.\n";
+				} else {
+					cout << "Account deletion canceled.\n";
+				}
+				reset();
+				return; // Exit the method after processing
+			} else {
+				++it; // Increment only if not erased
+			}
+		}
+
+		// If no account matches the username
+		cout << "Account \"" << usernameToRemove << "\" not found.\n";
 		reset();
 	}
 
