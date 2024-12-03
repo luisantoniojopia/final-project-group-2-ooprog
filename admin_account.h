@@ -5,30 +5,23 @@
 
 #include "base_account.h"
 #include "base_register_and_log_in.h"
+#include "user_account.h"
 using namespace std;
 
 class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
 private:
-	const string adminPassword = "yuripogi";
-
-public:
-		string username;
-		string password;
-
+	const string adminPassword;
 	vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
 	vector<UserAccount*> UserAccounts; // Stores user accounts objects
 
-
-	AdminAccount getAdminAccount(int i) {
-		return *AdminAccounts[i];
-	}
-
+public:
+	AdminAccount(string u, string p, string pn, string e)
+		: BaseAccount(u, p, pn, e), adminPassword("yuripogi") {}
 
 	void create() override {
-		string username, password;
+		string username, password, phoneNumber, email;
 
 		cout << "- Admin Create Account -\n\n";
-
 		cout << "Enter username: ";
 		cin.ignore();
 		getline(cin, username);
@@ -43,8 +36,8 @@ public:
         cout << "Enter password: ";
         getline(cin, password);
 
-        AdminAccounts.push_back({username, password});
-        cout << "Registration successful!" << endl;
+		auto* newAdmin = new AdminAccount(username, password, phoneNumber, email);
+		AdminAccounts.push_back(newAdmin);
 
 		reset();
 	}
@@ -127,11 +120,11 @@ public:
 	}
 
 	bool isUsernameTaken(const string& username) const {
-        for (const auto& account : AdminAccounts) {
-            if (account.username == username) {
-                return true;
-            }
-        }
-        return false;
-    }
+		for (const auto& account : AdminAccounts) {
+			if (account->getUsername() == username) {
+				return true;
+			}
+		}
+		return false;
+	}
 };
