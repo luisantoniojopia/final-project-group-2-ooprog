@@ -29,7 +29,7 @@ public:
     void setEmail(string e) { email = e; }
 
     // Vectors
-    vector<Reservation*> reservationList; // Stores reservation objects
+    // vector<Reservation*> reservationList; // Stores reservation objects
     // venue vector
     // payment method vector
     // payment record vector

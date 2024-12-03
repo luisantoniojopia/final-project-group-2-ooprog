@@ -12,15 +12,13 @@ class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
 protected:
 	const string adminPassword;
 	vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
-	vector<UserAccount*> UserAccounts; // Stores user accounts objects
+	// vector<UserAccount*> UserAccounts; // Stores user accounts objects
 
 public:
 	AdminAccount(string u, string p, string pn, string e)
 		: BaseAccount(u, p, pn, e), adminPassword("yuripogi") {}
 
 	void create() override {
-		string username, password, phoneNumber, email;
-
 		cout << "- Admin Create Account -\n\n";
 		cout << "Enter username: ";
 		cin.ignore();
@@ -61,7 +59,6 @@ public:
 	}
 
 	int logIn() override {
-		string username, password;
 
 		cout << "- Admin Log In -\n\n";
 
