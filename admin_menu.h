@@ -15,7 +15,7 @@ using namespace std;
 
 class AdminMenu : public BaseMenu {
 public:
-	void menu() override {
+	int menu() override {
 		reset();
 		bool condition = true;
 		int choice;
@@ -29,7 +29,7 @@ public:
 			cout << "4 - Manage Payment Section\n";
 			cout << "5 - Manage Payment Record Section\n";
 			cout << "6 - Generate Report Section\n";
-			cout << "7 - Exit System\n";
+			cout << "7 - Return\n";
 			cout << ": ";
 			cin >> choice;
 
@@ -424,10 +424,8 @@ public:
 						reset();
 						break;
 					}
-				case 7: {
-					cout << "Exiting system...";
-					exit(0);
-					break;
+				case 8: {
+					return -1;
 				}
 				default:
 					cout << "Invalid choice. Please try again.\n";

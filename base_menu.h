@@ -7,7 +7,7 @@ class BaseMenu {
 public:
     virtual ~BaseMenu() = default;
 
-    virtual void menu() = 0;
+    virtual int menu() = 0;
 
     void reset() {
         cout << endl;

@@ -12,7 +12,7 @@
 //
 // class UserMenu : public BaseMenu {
 // public:
-//     void menu() override {
+//     int menu() override {
 //         reset();
 //         bool condition = true;
 //         int choice;
