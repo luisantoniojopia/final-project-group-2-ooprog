@@ -5,7 +5,7 @@
 using namespace std;
 
 class BaseAccount {
-private:
+protected:
     string username;
     string password;
     string phoneNumber;

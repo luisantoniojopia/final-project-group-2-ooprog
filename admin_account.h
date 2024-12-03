@@ -9,7 +9,7 @@
 using namespace std;
 
 class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
-private:
+protected:
 	const string adminPassword;
 	vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
 	vector<UserAccount*> UserAccounts; // Stores user accounts objects
@@ -63,7 +63,7 @@ public:
 	int logIn() override {
 		string username, password;
 
-		cout << "- Admin log in account -\n\n";
+		cout << "- Admin Log In -\n\n";
 
 		cout << "Enter username: ";
 		cin.ignore();
@@ -72,18 +72,17 @@ public:
 		cout << "Enter password: ";
 		getline(cin, password);
 
+		// Check if credentials match any AdminAccount
 		for (size_t i = 0; i < AdminAccounts.size(); i++) {
-            if (AdminAccounts[i].username == username && AdminAccounts[i].password == password) {
+			if (AdminAccounts[i]->getUsername() == username && AdminAccounts[i]->getPassword() == password) {
+				cout << "Login successful!\n";
+				return i; // Return index of the logged-in admin
+			}
+		}
 
-                return i;
-            }
-        }
-
-        cout << "Invalid username or password.\n\n" << endl;
-        reset();
-        return -1; // Return -1 if login fails
-
+		cout << "Invalid username or password.\n";
 		reset();
+		return -1;
 	}
 
 	int registerOrLogIn() override {
