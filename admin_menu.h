@@ -4,10 +4,10 @@
 
 #include "base_menu.h"
 #include "admin_account.h"
+#include "reservation.h"
 // #include "payment_method.h"
 // #include "payment_record.h"
 // #include "report.h"
-// #include "reservation.h"
 // #include "user_account.h"
 // #include "venue.h"
 
@@ -424,7 +424,7 @@ public:
 						reset();
 						break;
 					}
-				case 8: {
+				case 7: {
 					return -1;
 				}
 				default:

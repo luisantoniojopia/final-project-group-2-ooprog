@@ -55,6 +55,8 @@ public:
 	}
 
 	void view() override {
+		// do this in table format
+
 		cout << "- Admin View Account -\n\n";
 		for (const auto& admin : AdminAccounts) {
 			cout << "Username: " << admin->getUsername() << endl;
@@ -66,10 +68,77 @@ public:
 	}
 
 	void update() override {
-		cout << "- Admin Update Account -\n\n";
+    cout << "- Admin Update Account -\n\n";
 
-		reset();
-	}
+    string usernameToUpdate;
+    cout << "Enter the username of the account you want to update: ";
+    cin.ignore();
+    getline(cin, usernameToUpdate);
+
+    // Search for the account
+    AdminAccount* accountToUpdate = nullptr;
+    for (auto& account : AdminAccounts) {
+        if (account->getUsername() == usernameToUpdate) {
+            accountToUpdate = account;
+            break;
+        }
+    }
+
+    if (!accountToUpdate) {
+        cout << "Account not found.\n";
+        reset();
+        return;
+    }
+
+    int choice;
+		bool condition = true;
+    while (condition) {
+        cout << "What would you like to update?\n";
+        cout << "1 - Password\n";
+        cout << "2 - Phone Number\n";
+        cout << "3 - Email\n";
+        cout << "4 - Return\n";
+        cout << ": ";
+        cin >> choice;
+
+        cin.ignore(); // To handle the newline character left by `cin`
+
+        switch (choice) {
+            case 1: {
+                string newPassword;
+                cout << "Enter new password: ";
+                getline(cin, newPassword);
+                accountToUpdate->setPassword(newPassword);
+                cout << "Password updated successfully!\n";
+                break;
+            }
+            case 2: {
+                string newPhoneNumber;
+                cout << "Enter new phone number: ";
+                getline(cin, newPhoneNumber);
+                accountToUpdate->setPhoneNumber(newPhoneNumber);
+                cout << "Phone number updated successfully!\n";
+                break;
+            }
+            case 3: {
+                string newEmail;
+                cout << "Enter new email: ";
+                getline(cin, newEmail);
+                accountToUpdate->setEmail(newEmail);
+                cout << "Email updated successfully!\n";
+                break;
+            }
+            case 4: {
+                cout << "Returning to main menu...\n";
+                reset();
+                return;
+            }
+            default:
+                cout << "Invalid choice. Please try again.\n";
+        }
+    }
+}
+
 
 	void remove() override {
 		cout << "- Admin Remove Account -\n\n";

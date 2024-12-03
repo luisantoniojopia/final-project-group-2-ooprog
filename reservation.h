@@ -19,6 +19,8 @@
 //     vector<Reservation*> reservationList; // Stores reservation objects
 //
 // public:
+//     // Constructor
+//     Reservation(string );
 //
 //     // Setters
 //     void setVenueID(const string& ID) { venueID = ID; }

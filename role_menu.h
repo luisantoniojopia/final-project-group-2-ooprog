@@ -13,7 +13,7 @@ private:
     const string adminPassword = "yuripogi";
 
 public:
-    void menu() override {
+    int menu() override {
         bool condition = true;
         int choice;
         string enterPassword;
