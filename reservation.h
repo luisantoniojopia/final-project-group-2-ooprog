@@ -19,6 +19,7 @@ private:
     vector<Reservation*> reservationList; // Stores reservation objects
 
 public:
+
     // Setters
     void setVenueID(const string& ID) { venueID = ID; }
     void setNumOfReservationDays(const string& numOfDays) { numOfReservationDays = numOfDays; }

@@ -5,10 +5,10 @@ using namespace std;
 #include "reservation.h"
 
 int main() {
-    Reservation h;
-    h.create();
-    h.view();
-    h.update();
-    h.remove();
+    Reservation r;
+    r.create();
+    r.view();
+    r.update();
+    r.remove();
     return 0;
 }

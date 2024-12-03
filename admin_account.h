@@ -17,7 +17,7 @@ public:
 		string password;
 	};
 
-	vector<AdminAccountsCollection> AdminAccounts;
+	vector<AdminAccountsCollection>  AdminAccounts;
 
 
 	AdminAccountsCollection getAdminAccount(int i) {

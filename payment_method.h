@@ -11,6 +11,13 @@ private:
     vector<string> paymentCodes;           // Stores payment method codes
     vector<string> paymentNames;           // Stores payment method names
     vector<bool> paymentStatuses;          // Stores availability (true = available, false = unavailable)
+public:
+    PaymentMethod() {
+        // Initialize with predefined methods
+        paymentCodes = {"CA", "CD", "BT"};
+        paymentNames = {"Cash", "Credit/Debit Card", "Bank Transfer"};
+        paymentStatuses = {true, true, true};
+    }
 
     void displayMethods(bool showStatus = false) const {
         cout << "Current Payment Methods:\n";
@@ -31,14 +38,6 @@ private:
             }
         }
         return -1; // Not found
-    }
-
-public:
-    PaymentMethod() {
-        // Initialize with predefined methods
-        paymentCodes = {"CA", "CD", "BT"};
-        paymentNames = {"Cash", "Credit/Debit Card", "Bank Transfer"};
-        paymentStatuses = {true, true, true};
     }
 
     // Create a new payment method
