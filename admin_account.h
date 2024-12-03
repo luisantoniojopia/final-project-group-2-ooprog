@@ -12,12 +12,11 @@ private:
 	const string adminPassword = "yuripogi";
 
 public:
-	struct AdminAccountsCollection {
 		string username;
 		string password;
-	};
 
-	vector<AdminAccount*>  AdminAccounts;
+	vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
+	vector<UserAccount*> UserAccounts; // Stores user accounts objects
 
 
 	AdminAccount getAdminAccount(int i) {
