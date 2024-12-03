@@ -17,11 +17,11 @@ public:
 		string password;
 	};
 
-	vector<AdminAccountsCollection>  AdminAccounts;
+	vector<AdminAccount*>  AdminAccounts;
 
 
-	AdminAccountsCollection getAdminAccount(int i) {
-		return AdminAccounts[i];
+	AdminAccount getAdminAccount(int i) {
+		return *AdminAccounts[i];
 	}
 
 

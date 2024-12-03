@@ -9,17 +9,15 @@ using namespace std;
 
 class UserAccount : public BaseAccount, public BaseRegisterAndLogIn {
 public:
-	struct UserAccountsCollection {
-		string accountUsername;
-		string accountPassword;
-	};
+	string accountUsername;
+	string accountPassword;
 	
-	vector<UserAccountsCollection> UserAccounts;
+	vector<UserAccount*> UserAccounts;
 	
-	UserAccountsCollection getUserAccount(int i) {
-		return UserAccounts[i];
+	UserAccount getUserAccount(int i) {
+		return *UserAccounts[i];
 	}
-	
+
     void create() override {
     	string accountUsername, accountPassword;
     	
