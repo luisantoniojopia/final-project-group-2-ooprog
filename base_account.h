@@ -1,8 +1,9 @@
 #pragma once
 
 #include <iostream>
-// #include "reservation.h"
 using namespace std;
+
+class Venue;
 
 class BaseAccount {
 protected:
@@ -10,6 +11,7 @@ protected:
     string password;
     string phoneNumber;
     string email;
+    vector<Venue*> venueLists;
 
 public:
     // Constructor
@@ -30,7 +32,6 @@ public:
 
     // Vectors
     // vector<Reservation*> reservationList; // Stores reservation objects
-    // venue vector
     // payment method vector
     // payment record vector
 

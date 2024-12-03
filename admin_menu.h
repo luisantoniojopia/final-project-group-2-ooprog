@@ -168,6 +168,7 @@ public:
 					reset();
 					bool MVScondition = true;
 					int MVSchoice;
+					Venue v("", "", "", "", ' ', "", "", 0, 0.0, "");
 
 					while(MVScondition) {
 						cout << "Manage Venue Section\n\n";
@@ -183,26 +184,22 @@ public:
 						switch(MVSchoice) {
 							case 1: {
 								reset();
-								// Venue v;
-								// v.create();
+								v.create();
 								break;
 							}
 							case 2: {
 								reset();
-								// Venue v;
-								// v.view();
+								v.view();
 								break;
 							}
 							case 3: {
 								reset();
-								// Venue v;
-								// v.update();
+								v.update();
 								break;
 							}
 							case 4: {
 								reset();
-								// Venue v;
-								// v.remove();
+								v.remove();
 								break;
 							}
 							case 5: {

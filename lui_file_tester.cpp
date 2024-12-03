@@ -2,6 +2,7 @@
 
 #include "admin_account.h"
 #include "role_menu.h"
+#include "venue.h"
 using namespace std;
 
 int main() {
