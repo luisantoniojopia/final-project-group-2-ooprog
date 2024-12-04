@@ -5,13 +5,9 @@ using namespace std;
 
 class BaseMenu {
 public:
-    virtual ~BaseMenu() = default;
+    virtual ~BaseMenu() = default;  // Virtual destructor for polymorphism
 
-    virtual int menu() = 0;
+    virtual int menu() = 0;         // Pure virtual function
 
-    void reset() {
-        cout << endl;
-        system("pause");
-        system("cls");
-    }
+    void reset();                   // Declaration of the `reset` function
 };

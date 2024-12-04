@@ -23,6 +23,7 @@ add_executable(sample main.cpp
         admin_account.cpp
         admin_menu.cpp
         role_menu.cpp
+        base_menu.cpp
 )
 
 # Lui test program executable

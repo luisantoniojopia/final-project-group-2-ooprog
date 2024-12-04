@@ -5,6 +5,8 @@
 
 using namespace std;
 
+vector<AdminAccount*> AdminAccount::AdminAccounts;
+
 // Constructor definition
 AdminAccount::AdminAccount(string u, string p, string pn, string e)
     : BaseAccount(u, p, pn, e), adminPassword("yuripogi") {}
