@@ -16,6 +16,7 @@
 #include "user_account.h"
 #include "admin_menu.h"
 #include "base_menu.h"
+#include "venue_manager.h"
 
 using namespace std;
 
