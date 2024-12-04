@@ -61,6 +61,12 @@ build CMakeFiles/sample.dir/base_account.cpp.obj: CXX_COMPILER__sample_unscanned
   OBJECT_DIR = CMakeFiles\sample.dir
   OBJECT_FILE_DIR = CMakeFiles\sample.dir
 
+build CMakeFiles/sample.dir/admin_account.cpp.obj: CXX_COMPILER__sample_unscanned_Debug C$:/Users/Luis$ Antonio/Desktop/sample/admin_account.cpp || cmake_object_order_depends_target_sample
+  DEP_FILE = CMakeFiles\sample.dir\admin_account.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\sample.dir
+  OBJECT_FILE_DIR = CMakeFiles\sample.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sample
@@ -69,7 +75,7 @@ build CMakeFiles/sample.dir/base_account.cpp.obj: CXX_COMPILER__sample_unscanned
 #############################################
 # Link the executable sample.exe
 
-build sample.exe: CXX_EXECUTABLE_LINKER__sample_Debug CMakeFiles/sample.dir/main.cpp.obj CMakeFiles/sample.dir/base_account.cpp.obj
+build sample.exe: CXX_EXECUTABLE_LINKER__sample_Debug CMakeFiles/sample.dir/main.cpp.obj CMakeFiles/sample.dir/base_account.cpp.obj CMakeFiles/sample.dir/admin_account.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\sample.dir

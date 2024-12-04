@@ -20,6 +20,7 @@ add_executable(sample main.cpp
         role_menu.h
         venue_manager.h
         base_account.cpp
+        admin_account.cpp
 )
 
 # Lui test program executable
