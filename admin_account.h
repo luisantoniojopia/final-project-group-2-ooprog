@@ -19,6 +19,8 @@ public:
 	AdminAccount(string u, string p, string pn, string e)
 		: BaseAccount(u, p, pn, e), adminPassword("yuripogi") {}
 
+	AdminAccount();
+
 	static vector<AdminAccount*> getAdminAccounts() {
 		return AdminAccounts;
 	}

@@ -24,7 +24,8 @@ private:
 	const string adminPassword = "yuripogi";
 
 public:
-	void menu() override {
+
+	int menu() override {
 		bool condition = true;
 		int choice;
 		string enterPassword;
@@ -41,8 +42,8 @@ public:
 	        switch(choice) {
 	        	case 1: {
 	        		reset();
-	        		UserAccount ua;
-		        	ua.registerOrLogIn();
+	        		// UserAccount ua;
+		        	// ua.registerOrLogIn();
 	        		break;
 	        	}
 	        	case 2: {
@@ -55,8 +56,8 @@ public:
 		        		AdminAccount ac;
 	        			int acc = ac.registerOrLogIn();
 						if (acc != -1) {
-							AdminAccount::AdminAccountsCollection admin = ac.getAdminAccount(acc);
-							cout << "Login successful! Welcome, " << admin.username << "!\n\n" << endl;
+							AdminAccount* admin = AdminAccount::getAdminAccounts()[acc];
+							cout << "Login successful! Welcome, " << admin->getUsername() << "!\n\n" << endl;
 							reset();
 							AdminMenu am;
 							am.menu();
