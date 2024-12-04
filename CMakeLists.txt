@@ -18,6 +18,7 @@ add_executable(sample main.cpp
         report.h
         user_menu.h
         role_menu.h
+        venue_manager.h
 )
 
 # Lui test program executable

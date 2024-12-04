@@ -18,6 +18,8 @@ public:
     BaseAccount(string u, string p, string pn, string e)
         : username(u), password(p), phoneNumber(pn), email(e) {}
 
+    BaseAccount();
+
     // Getters
     string getUsername() { return username; }
     string getPassword() { return password; }

@@ -6,6 +6,7 @@
 #include "admin_account.h"
 #include "reservation.h"
 #include "venue.h"
+#include "venue_manager.h"
 // #include "payment_method.h"
 // #include "payment_record.h"
 // #include "report.h"
@@ -14,7 +15,12 @@
 using namespace std;
 
 class AdminMenu : public BaseMenu {
+private:
+	VenueManager& venueManager;
+
 public:
+	AdminMenu() ;
+
 	int menu() override {
 		reset();
 		bool condition = true;
@@ -184,22 +190,28 @@ public:
 						switch(MVSchoice) {
 							case 1: {
 								reset();
-								v.create();
+								venueManager.addVenue();
 								break;
 							}
 							case 2: {
 								reset();
-								v.view();
+								venueManager.listVenues();
 								break;
 							}
 							case 3: {
 								reset();
-								v.update();
+								int index;
+								cout << "Enter venue index to update: ";
+								cin >> index;
+								venueManager.updateVenue(index - 1);
 								break;
 							}
 							case 4: {
 								reset();
-								v.remove();
+								int index;
+								cout << "Enter venue index to remove: ";
+								cin >> index;
+								venueManager.removeVenue(index - 1);
 								break;
 							}
 							case 5: {

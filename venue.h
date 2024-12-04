@@ -13,7 +13,7 @@ using namespace std;
 class BaseAccount;
 
 class Venue : public BaseAccount {
-protected:
+public:
     struct VenueDetails {
         char venueType;
         string venueName;
@@ -23,7 +23,6 @@ protected:
         string venueDescription;
     };
 
-private:
     void displayVenues(const vector<VenueDetails>& venues) const {
         if (venues.empty()) {
             cout << "No venues available.\n";
@@ -58,14 +57,17 @@ private:
         {'O', "Tiny Cabin", "SMALL", 6, 20000, "An Escape to this charming tiny cabin in nature."},
         {'O', "MultiSports Court", "MEDIUM", 10, 4000, "A versatile sports court is ideal for active events."}
     };
+    vector<VenueDetails> predefinedVenues;
     vector<VenueDetails> customVenues;
-
     VenueDetails venueDetails;
 
-public:
     // Constructor
     Venue(string u, string p, string pn, string e, char type, const string& name, const string& size, int capacity, double rate, const string& description)
         : BaseAccount(u, p, pn, e), venueDetails({type, name, size, capacity, rate, description}) {}
+
+    // Default constructor
+    Venue() : BaseAccount(), venueDetails({'I', "Default Venue", "SMALL", 50, 1000, "Default Description"}) {
+    }
 
     // Setters
     void setVenueType(char type) { venueDetails.venueType = type; }
@@ -83,7 +85,15 @@ public:
     double getVenueRate() const { return venueDetails.venueRate; }
     string getVenueDescription() const { return venueDetails.venueDescription; }
 
-    void create() {
+    vector<VenueDetails>& getCustomVenues() {
+        return customVenues;
+    }
+
+    vector<VenueDetails>& getPredefinedVenues() {
+        return venueListsCollection;
+    }
+
+    void create() override {
         char venueType;
         string venueName, venueSize, venueDescription;
         int venueCapacity;
@@ -139,6 +149,7 @@ public:
     }
 
     void updateVenueDetails(int index) {
+        // Check if the index is within the valid range
         if (index < 0 || index >= customVenues.size()) {
             cout << "Invalid venue index. No venue updated.\n";
             return;
@@ -147,16 +158,18 @@ public:
         // Reference the venue to update
         VenueDetails &venueToUpdate = customVenues[index];
 
-        // Ask the user for the new details
+        // Declare variables for user input
         char venueType;
         string venueName, venueSize, venueDescription;
         int venueCapacity;
         double venueRate;
 
+        // Ask the user for the new details
         cout << "\n- Update Venue -\n";
+
         cout << "Enter new type of venue (I = Indoor, O = Outdoor): ";
         cin >> venueType;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear the input buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
 
         cout << "Enter new venue name: ";
         getline(cin, venueName);
@@ -169,7 +182,7 @@ public:
 
         cout << "Enter new venue daily rate: ";
         cin >> venueRate;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear the input buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear the input buffer
 
         cout << "Enter new venue description: ";
         getline(cin, venueDescription);
@@ -182,6 +195,7 @@ public:
         venueToUpdate.venueRate = venueRate;
         venueToUpdate.venueDescription = venueDescription;
 
+        // Inform the user that the venue has been successfully updated
         cout << "Venue details successfully updated.\n";
     }
 

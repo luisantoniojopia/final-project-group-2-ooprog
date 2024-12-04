@@ -12,6 +12,7 @@ class AdminAccount : public BaseAccount, public BaseRegisterAndLogIn {
 protected:
 	const string adminPassword;
 	static vector<AdminAccount*>  AdminAccounts; // Stores admin accounts objects
+	// vector<Venue> adminVenues;
 	// vector<UserAccount*> UserAccounts; // Stores user accounts objects
 
 public:
